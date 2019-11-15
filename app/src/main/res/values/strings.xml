@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">设备ID打印</string>
+
+    <string-array name="labelSize">
+        <item>70x40标签</item>
+        <item>60x40标签</item>
+        <item>40x30标签</item>
+    </string-array>
+</resources>
