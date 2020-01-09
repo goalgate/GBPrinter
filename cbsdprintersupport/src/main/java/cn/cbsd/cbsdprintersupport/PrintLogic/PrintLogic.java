@@ -81,41 +81,41 @@ public class PrintLogic {
         }
     }
 
-//    public void CountDownPrint(int Count, Vector<Byte> datas) {
-//        if (BluetoothFuncLogic.getInstance().isConnected()) {
-//
-//            Observable.interval(1, 2, TimeUnit.SECONDS)
-//                .take(Count + 1)
-//                .map((aLong) -> {
-//                            return Count - aLong;
-//                        })
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(new Observer<Long>() {
-//                    @Override
-//                    public void onSubscribe(@NonNull Disposable d) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onNext(@NonNull Long aLong) {
-//                        print(datas);
-//                    }
-//
-//                    @Override
-//                    public void onError(@NonNull Throwable e) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onComplete() {
-//                        Log.e("Print","打印完毕");
-//                    }
-//                });
-//        } else {
-//            EventBus.getDefault().post(new PrintStatusEvent(BluetoothFuncConstant.PrinterStatus.STATE_DISCONNECTED));
-//        }
-//    }
+    public void CountDownPrint(int Count, Vector<Byte>[] datas) {
+        if (BluetoothFuncLogic.getInstance().isConnected()) {
+
+            Observable.interval(1, 3, TimeUnit.SECONDS)
+                .take(Count + 1)
+                .map((aLong) -> {
+                            return Count - aLong;
+                        })
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<Long>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NonNull Long aLong) {
+                        print(datas[(int)(Count - aLong)]);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        Log.e("Print","打印完毕");
+                    }
+                });
+        } else {
+            EventBus.getDefault().post(new PrintStatusEvent(BluetoothFuncConstant.PrinterStatus.STATE_DISCONNECTED));
+        }
+    }
 
 
 

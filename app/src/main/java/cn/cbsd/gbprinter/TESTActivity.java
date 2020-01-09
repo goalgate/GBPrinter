@@ -65,8 +65,16 @@ public class TESTActivity extends AskPermissionActivity {
         PerchlorateInfo.LabelSize labelSize = PerchlorateInfo.LabelSize.label_70x40;
         Bitmap mBitmap = new PerchlorateInfo("高氯酸[浓度50%～72%]", "易制爆标识", "44011200010104201911070000001000010").createLable(labelSize);
         img_QRCode.setImageBitmap(mBitmap);
-        LabelCommand tsc = new CBSDLabelCommand(labelSize.getPerchlorateInfoPosition().getLabelWidth(), labelSize.getPerchlorateInfoPosition().getLabelHeight(),mBitmap,1);
+        LabelCommand tsc = new CBSDLabelCommand(labelSize.getPerchlorateInfoPosition().getLabelWidth(), labelSize.getPerchlorateInfoPosition().getLabelHeight(), mBitmap, 1);
         Vector<Byte> datas = tsc.getCommand();
+//        Bitmap mBitmap1 = new PerchlorateInfo("高氯酸[浓度60%～72%]", "易制爆标识", "44011200010104201911070000001000010").createLable(labelSize);
+//        LabelCommand tsc1 = new CBSDLabelCommand(labelSize.getPerchlorateInfoPosition().getLabelWidth(), labelSize.getPerchlorateInfoPosition().getLabelHeight(), mBitmap1, 1);
+//        Vector<Byte> datas1 = tsc1.getCommand();
+//        Bitmap mBitmap2 = new PerchlorateInfo("高氯酸[浓度70%～72%]", "易制爆标识", "44011200010104201911070000001000010").createLable(labelSize);
+//        LabelCommand tsc2 = new CBSDLabelCommand(labelSize.getPerchlorateInfoPosition().getLabelWidth(), labelSize.getPerchlorateInfoPosition().getLabelHeight(), mBitmap2, 1);
+//        Vector<Byte> datas2 = tsc2.getCommand();
+//
+//        Vector<Byte>[] list = new Vector[]{datas,datas1,datas2};
         BluetoothFuncLogic.getInstance().getStatusImmediately(new BluetoothFuncLogic.StatusCallback() {
             @Override
             public void onSuccess() {

@@ -21,6 +21,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.cbsd.cbsdprintersupport.Event.PrintStatusEvent;
+import cn.cbsd.cbsdprintersupport.Label.CBSDLabelCommand;
 import cn.cbsd.cbsdprintersupport.UI.BluetoothDeviceList;
 import cn.cbsd.cbsdprintersupport.PrintLogic.BluetoothFuncLogic;
 import cn.cbsd.cbsdprintersupport.PrintLogic.PrintLogic;
@@ -114,29 +115,12 @@ public class IndexActivity extends AskPermissionActivity {
 
     //打印
     private void printLabel() {
-        LabelCommand tsc = new LabelCommand();
-        tsc.addSize(printLabelW, printLabelH); //设置标签尺寸，按照实际尺寸设置
-        tsc.addGap(2);           //设置标签间隙，按照实际尺寸设置，如果为无间隙纸则设置为0
-        tsc.addDirection(LabelCommand.DIRECTION.BACKWARD, LabelCommand.MIRROR.NORMAL);//设置打印方向
-        tsc.addReference(0, 0);//设置原点坐标
-        tsc.addTear(EscCommand.ENABLE.ON); //撕纸模式开启
-        tsc.addCls();// 清除打印缓冲区
-
-        //该机1毫米等于8个点，所以长 560 ，宽 320 ，设置图片、文字都要按照这个标准规定位置
-
-        //绘制图片
-        tsc.addBitmap(0, 0, LabelCommand.BITMAP_MODE.OVERWRITE, mBitmap.getWidth(), mBitmap);
-        //tsc.addPrint(1, 2); // 打印标签
-        if(cbPrintOneLabel.isChecked())
-        {
+        LabelCommand tsc = new CBSDLabelCommand(printLabelW,printLabelH,mBitmap,0);
+        if(cbPrintOneLabel.isChecked()) {
             tsc.addPrint(1, 1); // 打印标签
         }else {
             tsc.addPrint(1, 2); // 打印标签
         }
-        //tsc.addPrint(1, 1); // 打印标签
-        tsc.addSound(2, 100); //打印标签后 蜂鸣器响
-        //tsc.addQueryPrinterStatus();
-        //接下来基本不用修改
         Vector<Byte> datas = tsc.getCommand(); //发送数据
         BluetoothFuncLogic.getInstance().getStatusImmediately(new BluetoothFuncLogic.StatusCallback() {
             @Override

@@ -210,6 +210,7 @@ public class BluetoothFuncLogic {
                     }
                     if (listener != null) {
                         listener.onSuccess();
+                        listener = null;
                     }
                     int cnt = msg.getData().getInt(READ_DATA_CNT); //数据长度 >0;
                     byte[] buffer = msg.getData().getByteArray(READ_BUFFER_ARRAY);  //数据
