@@ -23,7 +23,9 @@ import static android.graphics.Color.BLACK;
 public class PerchlorateInfo {
 
     public enum LabelSize {
-        label_40x30(new PerchlorateInfoPosition(40, 30, 96, 112, 160, 0, 128, 22, 0, 160, 32, 0, 256, 18)),
+//        label_40x30(new PerchlorateInfoPosition(40, 30, 96, 112, 160, 0, 128, 22, 0, 160, 32, 0, 256, 18)),
+        label_40x30(new PerchlorateInfoPosition(40, 30, 96, 115, 160, 0, 128, 22, 0, 160, 30, 0, 256, 18)),
+
         label_30x20(new PerchlorateInfoPosition(30,20,144,184,104,56,192,18,64,208,24,56,272,15)),
 
 
@@ -213,7 +215,7 @@ public class PerchlorateInfo {
         if (iskind) {
             textPaint.setTextSize(mPerchlorateInfoPosition.getKindSize());
 
-            StaticLayout layout = new StaticLayout(kind, textPaint, 80,
+            StaticLayout layout = new StaticLayout(kind, textPaint, 90,
                     Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, true);
 
             canvas.translate(mPerchlorateInfoPosition.getKindPositionX()+deviation, mPerchlorateInfoPosition.getKindPositionY());

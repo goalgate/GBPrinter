@@ -16,6 +16,8 @@ public class CBSDLabelCommand extends LabelCommand {
         addSound(2, 100);
         addSize(width,height);
         addBitmap(0, 0, LabelCommand.BITMAP_MODE.OVERWRITE, bitmap.getWidth(), bitmap);
+//        addBitmap(-120, -80, LabelCommand.BITMAP_MODE.OVERWRITE, bitmap.getWidth(), bitmap);
+//        addBitmap(-165, -162, LabelCommand.BITMAP_MODE.OVERWRITE, bitmap.getWidth(), bitmap);
         addPrint(1, n);
     }
 }
